@@ -1,5 +1,15 @@
-function AddTask(){
-    return <h1>Adicione sua task</h1>
+function AddTask({onAddTaskClick}){
+
+    
+    return (
+        <div className="space-y-4 p-6 bg-slate-200 rounded-md shadow flex flex-col ">
+            <input className="px-4 py-2 text-center rounded-md" 
+            type="text" placeholder="Digite o nome da sua Task" />
+            <input className="px-4 py-2 text-center rounded-md" 
+            type="text" placeholder="Digite a descrição da sua Task" />
+            <button onClick= {() => onAddTaskClick(title, task.description)} className="bg-slate-700 text-white rounded-md text-center">Adicionar Task</button>
+        </div>
+    )
 }
 
 export default AddTask

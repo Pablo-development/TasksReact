@@ -22,6 +22,22 @@ function App(){
     },
   ]);
 
+function onAddTaskClick(title, description){
+
+  const newTask = setTasks(
+    {
+      id: length + 1,
+      title: title,
+      description: description,
+      isCompleted: false
+    },
+
+    tasks = ([...tasks, newTask])
+  )
+  return tasks;
+
+}
+
   function onTaskClick(taskId){
     const newTask = tasks.map((task) => {
       console.log(task)
@@ -42,11 +58,12 @@ function App(){
   
 
   return (
-    <div className="h-screen w-screen bg-slate-500 flex justify-center p-6">
-      <div className="w-[500px]">
+    <div className="h-screen w-screen bg-slate-500 flex justify-center p-6 ">
+      <div className="w-[500px] flex flex-col gap-4">
         <h1 className="text-3xl text-slate-100 font-bold text-center">Gerenciador de tarefas</h1>
-        <AddTask/>
-        <Tasks tasks={tasks} onTaskClick={onTaskClick} onDeleteTaskClick={onDeleteTaskClick}/>
+        <AddTask onAddTaskClick={onAddTaskClick}/>
+        <Tasks tasks={tasks} onTaskClick={onTaskClick} onDeleteTaskClick={onDeleteTaskClick}
+        />
       </div>
     </div>
   );
