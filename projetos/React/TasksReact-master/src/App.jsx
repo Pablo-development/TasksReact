@@ -5,7 +5,7 @@ import AddTask from "./components/AddTask";
 
 function App(){
   
-  //state de tasks
+
   const [tasks, setTasks] = useState([
     {
       //objetos
@@ -23,27 +23,22 @@ function App(){
   ]);
 
 function onAddTaskClick(title, description){
-
-  const newTask = setTasks(
+  const newTask = 
     {
-      id: length + 1,
-      title: title,
-      description: description,
+      id: Date.now(),
+      title,
+      description,
       isCompleted: false
-    },
-
-    tasks = ([...tasks, newTask])
-  )
-  return tasks;
-
+    };
+    setTasks([...tasks, newTask]);
+    console.log(tasks)
+    
 }
 
   function onTaskClick(taskId){
     const newTask = tasks.map((task) => {
       console.log(task)
       if(task.id === taskId){
-        //Aqui, caso o id recebido seja o mesmo da iteração, atualizamos o boolean
-        //falso para true
         return {...task, isCompleted: !task.isCompleted}
       }
       return task;
