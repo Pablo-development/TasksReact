@@ -11,6 +11,7 @@ function Tasks({tasks, onTaskClick, onDeleteTaskClick}){
         navigate(`/task?${query.toString()}`);
     }
 
+    //teste para ver como funciona o navigate, basta passar essa função ao onclick do botão
     function testeNavigate(){
         navigate(`/task`)
     }
@@ -23,7 +24,7 @@ function Tasks({tasks, onTaskClick, onDeleteTaskClick}){
                 className={`bg-slate-700 text-white p-2 w-full ${task.isCompleted && "line-through"}`}>
                     {task.title}
                 </button>
-                <button onClick={() => testeNavigate()} className="bg-slate-700 text-white p-2 ">
+                <button onClick={() => onSeeDetailsClick(task)} className="bg-slate-700 text-white p-2 ">
                     <ChevronsRightIcon />
                 </button>
                 <button onClick= {() => onDeleteTaskClick(task.id)} className="bg-slate-700 text-white p-2 ">
