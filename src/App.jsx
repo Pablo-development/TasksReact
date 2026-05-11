@@ -1,38 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
 
 
 function App(){
   
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
 
-  const [tasks, setTasks] = useState([
-    {
-      //objetos
-      id: 1,
-      title: "teste",
-      description: "teste",
-      isCompleted: false,
-    },
-    {
-      id: 2,
-      title: "teste2",
-      description: "teste",
-      isCompleted: false,
-    },
-  ]);
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
-function onAddTaskClick(title, description){
-  const newTask = 
-    {
-      id: Date.now(),
-      title,
-      description,
-      isCompleted: false
-    };
-    setTasks([...tasks, newTask]);
-    console.log(tasks)
-    
+  function onAddTaskClick(title, description){
+    const newTask = 
+      {
+        id: Date.now(),
+        title,
+        description,
+        isCompleted: false
+      };
+      setTasks([...tasks, newTask]);
+      console.log(tasks)
+      
 }
 
   function onTaskClick(taskId){
